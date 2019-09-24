@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<script type="text/javascript" src="/first/resources/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function validation(){
+	return true; //전송함
+}
+
+function checkId(){
+	return false; //전송X
+}
+
+$(function(){
+	$("#userpwd2").on("keyup", function(){
+		if(event.keyCode == 13){
+			if($("#userpwd").val() != $(this).val()){
+				alert("암호와 암호 확인이 일치하지 않습니다. \n 다시 입력하십시오.");
+				$("#userpwd").select();
+			}
+		}
+		return false; //전송되지 않게 함
+	});
+});
+</script>
+</head>
+<body>
+<h1 align="center">회원 가입하세요.</h1>
+<br>
+<form action="/first/enroll" method="post" onsubmit="return validation();">
+<table align="center" width="600" cellsacing="0" cellpadding="5" border="1">
+<tr><th>이름</th><td><input type="text" name="username" id="username"></td></tr>
+<tr><th>아이디</th><td><input type="text" name=""userid"" id="userid"> &nbsp; 
+<button onclick="return checkId();">중복체크</button></td></tr>
+<tr><th>암호</th><td><input type="password" name="userpwd" id="userpwd"></td></tr>
+<tr><th>암호확인</th><td><input type="password" id="userpwd2" ></td></tr>
+<tr><th>성 별</th>
+<td><input type="radio" name="gender" value="M"> 남자 &nbps;
+<input type="radio" name="gender" value="F"> 여자 </td></tr>
+<tr><th>나 이</th><td><input type="number" name="age" min="19" max="100" step="1"></td></tr>
+<tr><th>전화번호</th><td><input type="tell" name="phone"></td></tr>
+<tr><th>이메일</th><td><input type="email" name="email"></td></tr>
+<tr><th>취 미</th>
+<td>
+	<table width="300">
+	<tr><td><input type="checkbox" name="hobby" value="game"> 게임하기</td>
+		<td><input type="checkbox" name="hobby" value="climb"> 등산하기</td>
+		<td><input type="checkbox" name="hobby" value="reding"> 책읽기</td></tr>
+	<tr><td><input type="checkbox" name="hobby" value="music"> 음악감상</td>
+		<td><input type="checkbox" name="hobby" value="sport"> 운동하기</td>
+		<td><input type="checkbox" name="hobby" value="movie"> 영화감상</td></tr>
+	<tr><td><input type="checkbox" name="hobby" value="cook"> 요리하기</td>
+		<td><input type="checkbox" name="hobby" value="travle"> 여행하기</td>
+		<td><input type="checkbox" name="hobby" value="etc"> 기타</td></tr>
+	</table>
+</td></tr>
+<tr><th>하고 싶은 말</th><td><textarea name="etc" rows="5" cols="60"></textarea></td></tr>
+<tr><th colspan="2">
+	<input type="submit" value="가입하기">&nbsp;
+	<input type="reset" value="작성취소">
+	<a href="javascript:history.go(-1);">이전 페이지로 이동</a>
+</th></tr>
+</table>
+</form>
+</body>
+</html>
